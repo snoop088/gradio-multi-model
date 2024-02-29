@@ -1,0 +1,14 @@
+torch
+transformers
+datasets
+accelerate
+langchain
+langchain-community
+bitsandbytes
+ipywidgets
+openai
+python-dotenv
+tiktoken
+unstructured
+sentence-transformers
+gradio
