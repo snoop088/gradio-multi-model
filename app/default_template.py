@@ -1,5 +1,5 @@
 TEMPLATE = """
-Current conversation:
+Previous conversation:
 {history}
 Instruct:
 {input}
