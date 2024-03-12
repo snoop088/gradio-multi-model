@@ -1,6 +1,7 @@
 {
     "templates": {
         "default": "Previous conversation:\n{history}\nInstruct:\n{input}\nOutput:",
-        "CodeLLama 13b Instruct": "[INST]You are a helpful assistant ready to assist your human friend.\nPrevious conversation:\n{history}\nHuman:\n{input}[/INST]"
+        "CodeLLama 13b Instruct": "[INST]You are a helpful assistant ready to assist your human friend.\nPrevious conversation:\n{history}\nHuman:\n{input}[/INST]",
+        "Mistral-7B-Instruct": "<s>[INST]Answer the Human questions as well as you can. Take into account previous conversation.\nPrevious conversation:\n{history}\nHuman:\n{input}[/INST]"
     }
 }

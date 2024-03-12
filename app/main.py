@@ -12,7 +12,6 @@ from default_template import TEMPLATE
 
 from app_state import SingletonState
 import logging
-import json
 
 _ = load_dotenv(find_dotenv()) # read local .env file
 openai.api_key = os.environ['OPENAI_API_KEY'] 
@@ -21,25 +20,7 @@ state = SingletonState()
 
 logging.basicConfig(level=logging.DEBUG)
 
-
-
 with gr.Blocks() as demo:
-    
-    # def load_tmpl():
-    #     with open('templates/templates.json') as f:
-    #         data = json.loads(f.read())
-    #         state = SingletonState()
-    #         state.data["templates"] = data["templates"]
-    #         return {tmpls: gr.Radio(choices=list(state.data["templates"].keys()), visible=True, interactive=True), loader: gr.Button(visible=True)}
-
-    # def load_selected(key):
-    #     try:
-    #         state = SingletonState()
-    #         logging.debug(key)
-    #         return state.data["templates"][key]
-    #     except:
-    #         logging.debug('errorrrr')
-    #         return TEMPLATE.strip()
     
     placeholder_template = TEMPLATE.strip()
     
@@ -49,7 +30,7 @@ with gr.Blocks() as demo:
         device = gr.Dropdown(['auto', 'gpu'], label='Device')
         temperature = gr.Slider(minimum=0, maximum=1, value=0.25, label='Temperature')
     b1 = gr.Button('Load Model')
-    # progress = gr.Textbox()
+
     llm_type = gr.Radio(choices=['open_llm', 'gpt_3', 'gpt_4'], value='open_llm')
     
     message = gr.Textbox(label='Message')
@@ -66,14 +47,10 @@ with gr.Blocks() as demo:
     b2.click(inference, inputs=[message, bot, llm_type, temperature, template], outputs=[message, bot])
     b3.click(cleanup)
 
-    
-
     b_tmpl_load.click(load_tmpl, outputs=[tmpls, loader])
     loader.click(load_selected, inputs=[tmpls], outputs=[template])
-    
-    
-        
+
 
 if __name__ == "__main__":   
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="0.0.0.0", server_port=7860, share=True)
     

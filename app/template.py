@@ -1,7 +1,4 @@
-
-
 import json
-import logging
 import gradio as gr
 from default_template import TEMPLATE
 from app_state import SingletonState
@@ -17,8 +14,6 @@ def load_tmpl():
 def load_selected(key):
     try:
         state = SingletonState()
-        logging.debug(key)
         return state.data["templates"][key]
     except:
-        logging.debug('errorrrr')
         return TEMPLATE.strip()
