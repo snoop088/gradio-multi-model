@@ -18,7 +18,7 @@ openai.api_key = os.environ['OPENAI_API_KEY']
 
 state = SingletonState()
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 with gr.Blocks() as demo:
     
