@@ -24,7 +24,7 @@ with gr.Blocks() as demo:
     
     placeholder_template = TEMPLATE.strip()
     
-    model_name = gr.Textbox(label='Model', info='/code/models/phi-2 | /code/models/CodeLlama-13b-Instruct-hf')
+    model_name = gr.Textbox(label='Model', info='/code/models/phi-2 | /code/models/CodeLlama-13b-Instruct-hf | /code/models/Meta-Llama-3-8B-Instruct | /code/models/Mistral-7B-Instruct-v0.2')
     with gr.Row():
         quant = gr.Dropdown(['full', '8bit', '4bit'], label='Quant')
         device = gr.Dropdown(['auto', 'gpu'], label='Device')

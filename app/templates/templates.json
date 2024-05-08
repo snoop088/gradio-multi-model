@@ -2,6 +2,7 @@
     "templates": {
         "default": "Previous conversation:\n{history}\nInstruct:\n{input}\nOutput:",
         "CodeLLama 13b Instruct": "[INST]You are a helpful assistant ready to assist your human friend.\nPrevious conversation:\n{history}\nHuman:\n{input}[/INST]",
-        "Mistral-7B-Instruct": "<s>[INST]Answer the Human questions as well as you can. Take into account previous conversation.\nPrevious conversation:\n{history}\nHuman:\n{input}[/INST]"
+        "Mistral-7B-Instruct": "<s>[INST]Answer the Human questions as well as you can. Take into account previous conversation.\nPrevious conversation:\n{history}\nHuman:\n{input}[/INST]",
+        "LLama3-8BInstruct": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>You are a helpfull AI Assistant answering questions to the fullest of your knowledge.\nTry and supply a detailed answer acknowledging if you do not know enough on a subject keeping in mind previous conversation history listed below:\nHistory: {history}\n|eot_id|><|start_header_id|>user <|end_header_id|>{input}\n<|eot_id|><|start_header_id|>assistant <|end_header_id|>"
     }
 }
