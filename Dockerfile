@@ -10,4 +10,4 @@ COPY ./app ./app
 
 WORKDIR /code/app
 
-CMD [ "gradio", "main.py"]
+CMD [ "python", "main.py"]
