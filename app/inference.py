@@ -1,5 +1,4 @@
 from langchain_community.chat_models import ChatOpenAI
-from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
@@ -27,11 +26,11 @@ def inference(message, history, llm_type, temperature, template=None):
         chain = prompt | gpt4_llm | StrOutputParser()
         response = chain.invoke({"input": sanitised_message})
     else:
+        prompt = PromptTemplate(template=result_template.replace('{history}', sanitize_str(history_str)), input_variables=["input"])
         try:
-            app_state.data["llm_obj"]["chain"] = prompt | app_state.data["llm_obj"]["open_llm"] | StrOutputParser()
+            chain = prompt | app_state.data["llm_obj"]["open_llm"]
             # LLMChain(llm=app_state.data["llm_obj"]["open_llm"], prompt=prompt, verbose=True)
-            response = app_state.data["llm_obj"]["chain"].invoke({"input": sanitised_message})
-            print(response)
+            response = chain.invoke({"input": sanitised_message})
         except KeyError:
             raise(Exception('Missing Open LLM model'))
 

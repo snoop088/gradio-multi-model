@@ -47,7 +47,7 @@ def model_runner(model_name, quant, device, temperature):
 
     app_state.data["llm_obj"]["tokenizer"] = AutoTokenizer.from_pretrained(model_name)
     # total_steps = list(model.parameters())
-
+    
     app_state.data["llm_obj"]["open_llm"] = HuggingFacePipeline(
         pipeline=pipeline(
             "text-generation",
@@ -55,9 +55,9 @@ def model_runner(model_name, quant, device, temperature):
                 model_name, trust_remote_code=True, torch_dtype="auto", **model_args
             ),
             tokenizer=app_state.data["llm_obj"]["tokenizer"],
-            return_full_text=True,
             generation_config=getConfigFromModel(
                 model_name, app_state.data["llm_obj"]["tokenizer"], temperature
             ),
+            return_full_text=False
         )
     )
