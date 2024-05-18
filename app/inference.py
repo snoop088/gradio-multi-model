@@ -26,7 +26,6 @@ def inference(message, history, llm_type, temperature, template=None):
         chain = prompt | gpt4_llm | StrOutputParser()
         response = chain.invoke({"input": sanitised_message})
     else:
-        prompt = PromptTemplate(template=result_template.replace('{history}', sanitize_str(history_str)), input_variables=["input"])
         try:
             chain = prompt | app_state.data["llm_obj"]["open_llm"]
             # LLMChain(llm=app_state.data["llm_obj"]["open_llm"], prompt=prompt, verbose=True)
