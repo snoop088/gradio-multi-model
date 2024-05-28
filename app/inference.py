@@ -21,7 +21,7 @@ def inference(message, history, llm_type, temperature, template=None):
         gpt3_llm = ChatOpenAI(temperature=temperature, model="gpt-3.5-turbo") 
         chain = prompt | gpt3_llm | StrOutputParser()
         response = chain.invoke({"input": sanitised_message})
-    elif (llm_type == 'gpt-4o'):
+    elif (llm_type == 'gpt_4'):
         gpt4_llm = ChatOpenAI(temperature=temperature, model="gpt-4o")
         chain = prompt | gpt4_llm | StrOutputParser()
         response = chain.invoke({"input": sanitised_message})
